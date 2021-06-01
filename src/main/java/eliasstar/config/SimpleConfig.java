@@ -3,8 +3,8 @@ package eliasstar.config;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import json.classes.JSONArray;
-import json.classes.JSONObject;
+import eliasstar.json.objects.JSONArray;
+import eliasstar.json.objects.JSONObject;
 
 public abstract class SimpleConfig extends Config {
 
@@ -44,7 +44,6 @@ public abstract class SimpleConfig extends Config {
         return maxUpdateTries;
     }
 
-    // #region Getter and Setter
     public void setChar(String name, char value) {
         set(name, value);
     }
@@ -140,5 +139,4 @@ public abstract class SimpleConfig extends Config {
     public Config getConfig(String name) {
         return super.getConfig(name);
     }
-    // #endregion
 }

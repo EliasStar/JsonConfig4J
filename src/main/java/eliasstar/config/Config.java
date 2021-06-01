@@ -2,18 +2,17 @@ package eliasstar.config;
 
 import java.io.IOException;
 
-import json.JSON;
-import json.classes.JSONObject;
-import json.exceptions.JSONException;
-import json.interfaces.JSONSerializable;
+import eliasstar.json.JSON;
+import eliasstar.json.objects.JSONObject;
+import eliasstar.json.exceptions.JSONException;
+import eliasstar.json.JSONSerializable;
 
 public class Config implements JSONSerializable {
 
     private final JSONObject currentConfig = new JSONObject();
     private final JSONObject defaultConfig = new JSONObject();
 
-    public Config() {
-    }
+    public Config() {}
 
     private Config(JSONObject object) {
         replaceWith(object);
@@ -48,13 +47,11 @@ public class Config implements JSONSerializable {
     public Config getConfig(String name) {
         Object obj = currentConfig.getMember(name);
 
-        if (obj instanceof Config) {
+        if (obj instanceof Config)
             return (Config) obj;
-        }
 
-        if (obj instanceof JSONObject) {
+        if (obj instanceof JSONObject)
             return new Config((JSONObject) obj);
-        }
 
         return null;
     }
@@ -79,6 +76,7 @@ public class Config implements JSONSerializable {
             currentConfig.setMember(name, defaultConfig.getMember(name));
             return true;
         }
+
         return false;
     }
 
