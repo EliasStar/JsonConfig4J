@@ -19,10 +19,10 @@ package eliasstar.config;
 
 import java.io.IOException;
 
-import eliasstar.json.JSON;
-import eliasstar.json.objects.JSONObject;
-import eliasstar.json.exceptions.JSONException;
-import eliasstar.json.JSONSerializable;
+import eliasstar.json.Json;
+import eliasstar.json.objects.JsonObject;
+import eliasstar.json.exceptions.JsonException;
+import eliasstar.json.JsonSerializable;
 
 /**
  * A basic config with default store.
@@ -30,22 +30,22 @@ import eliasstar.json.JSONSerializable;
  * @author Elias*
  * @since 1.0.0
  */
-public class Config implements JSONSerializable {
+public class Config implements JsonSerializable {
 
-    private final JSONObject currentConfig = new JSONObject();
-    private final JSONObject defaultConfig = new JSONObject();
+    private final JsonObject currentConfig = new JsonObject();
+    private final JsonObject defaultConfig = new JsonObject();
 
     public Config() {}
 
-    private Config(JSONObject object) {
+    private Config(JsonObject object) {
         replaceWith(object);
     }
 
     public static void load(String configPath, int maxTries, Config config) throws IOException {
         for (int i = 0; i <= maxTries; i++) {
             try {
-                config.replaceWith((JSONObject) JSON.readFile(configPath));
-            } catch (JSONException e) {
+                config.replaceWith((JsonObject) Json.readFile(configPath));
+            } catch (JsonException e) {
                 e.printStackTrace();
             }
         }
@@ -54,15 +54,15 @@ public class Config implements JSONSerializable {
     public static void save(String configPath, int maxTries, Config config) throws IOException {
         for (int i = 0; i <= maxTries; i++) {
             try {
-                JSON.writeFile(configPath, config);
+                Json.writeFile(configPath, config);
                 break;
-            } catch (JSONException e) {
+            } catch (JsonException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void replaceWith(JSONObject object) {
+    private void replaceWith(JsonObject object) {
         defaultConfig.setAllMembers(object.getAllMembers());
         currentConfig.setAllMembers(object.getAllMembers());
     }
@@ -73,8 +73,8 @@ public class Config implements JSONSerializable {
         if (obj instanceof Config)
             return (Config) obj;
 
-        if (obj instanceof JSONObject)
-            return new Config((JSONObject) obj);
+        if (obj instanceof JsonObject)
+            return new Config((JsonObject) obj);
 
         return null;
     }
@@ -104,7 +104,7 @@ public class Config implements JSONSerializable {
     }
 
     @Override
-    public String toJSON() {
-        return currentConfig.toJSON();
+    public String toJson() {
+        return currentConfig.toJson();
     }
 }

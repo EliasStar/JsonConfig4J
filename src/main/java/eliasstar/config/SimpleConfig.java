@@ -20,8 +20,8 @@ package eliasstar.config;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import eliasstar.json.objects.JSONArray;
-import eliasstar.json.objects.JSONObject;
+import eliasstar.json.objects.JsonArray;
+import eliasstar.json.objects.JsonObject;
 
 /**
  * Wrapper around Config with setp function.
@@ -139,20 +139,20 @@ public abstract class SimpleConfig extends Config {
         return (String) get(name);
     }
 
-    public void setJSONArray(String name, JSONArray value) {
+    public void setJsonArray(String name, JsonArray value) {
         set(name, value);
     }
 
-    public JSONArray getJSONArray(String name) {
-        return (JSONArray) get(name);
+    public JsonArray getJsonArray(String name) {
+        return (JsonArray) get(name);
     }
 
-    public void setJSONObject(String name, JSONObject value) {
+    public void setJsonObject(String name, JsonObject value) {
         set(name, value);
     }
 
-    public JSONObject getJSONObject(String name) {
-        return (JSONObject) get(name);
+    public JsonObject getJsonObject(String name) {
+        return (JsonObject) get(name);
     }
 
     public void setConfig(String name, Config value) {
