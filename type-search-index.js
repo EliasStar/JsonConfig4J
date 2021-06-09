@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"eliasstar.config","l":"Config"},{"p":"eliasstar.config","l":"SimpleConfigLambda.Function"},{"p":"eliasstar.config","l":"SimpleConfig"},{"p":"eliasstar.config","l":"SimpleConfigLambda"}]
